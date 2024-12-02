@@ -16,7 +16,28 @@ public class TaskExecutor {
 
     public List<EntryResult> ExecuteWork(int numberOfThreads, List<StorageTask> tasks, LockType lockType) {
         /* IMPLEMENT HERE THE THREAD POOL, ASSIGN THE TASKS AND RETURN THE RESULTS */
-        return new ArrayList<>();
+        // ReaderPreffered
+
+        ThreadPool threadPool = new ThreadPool(numberOfThreads, lockType, sharedDatabase);
+
+//        System.out.println("Starting Pool\n");
+        threadPool.start();
+//        System.out.println("Pool started\n");
+
+        for(StorageTask task : tasks) {
+            threadPool.addTask(task);
+        }
+
+//        System.out.println("Added " + tasks.size() + " tasks to Pool\n");
+
+        threadPool.isReceiving = false;
+
+        while(threadPool.isUp()){}
+
+        threadPool.close();
+
+        return threadPool.results;
+
     }
 
     public List<EntryResult> ExecuteWorkSerial(List<StorageTask> tasks) {

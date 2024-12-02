@@ -87,7 +87,7 @@ class ExecutorTests {
 
     @Test
     void executeWorkReaderPreferred1() {
-        executeWork(10, 100, 0.2, testValues1, testValues1.length, 255, 100, 250, LockType.ReaderPreferred, 10);
+        executeWork(10, 100, 0.2, testValues1, testValues1.length, 255, 100, 250, LockType.ReaderPreferred, 100);
     }
 
     @Test

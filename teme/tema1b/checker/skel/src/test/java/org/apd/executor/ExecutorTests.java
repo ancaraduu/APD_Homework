@@ -1,6 +1,6 @@
-package org.apd.executor;
+package main.java.org.apd.executor;
 
-import org.apd.storage.EntryResult;
+import main.java.org.apd.storage.EntryResult;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
